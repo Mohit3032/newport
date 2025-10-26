@@ -37,7 +37,7 @@ const Pricing = () => {
               <div className="list_inner w-full h-auto clear-both float-left relative border-solid border-[rgba(0,0,0,.1)] border px-[40px] pt-[27px] pb-[45px]">
                 <div className="price w-full float-left">
                   <h3 className="text-[40px] font-semibold">
-                    <span>99<span className="currency">$</span></span>
+                    <span>249<span className="currency">$</span></span>
                   </h3>
                 </div>
                 <div className="plan w-full float-left">
@@ -65,7 +65,7 @@ const Pricing = () => {
               <div className="list_inner w-full h-auto clear-both float-left relative border-solid border-[rgba(0,0,0,.1)] border px-[40px] pt-[27px] pb-[45px]">
                 <div className="price w-full float-left">
                   <h3 className="text-[40px] font-semibold">
-                    <span>299<span className="currency">$</span></span>
+                    <span>499<span className="currency">$</span></span>
                   </h3>
                 </div>
                 <div className="plan w-full float-left">
@@ -80,7 +80,7 @@ const Pricing = () => {
                   <li className="active"><p>Ongoing Support (30 days)</p></li>
                 </ul>
                 <div className="tokyo_tm_button" data-position="left">
-                  <a href="#"><span>Purchase</span></a>
+                  <a href="/#contact"><span>Purchase</span></a>
                 </div>
               </div>
             </li>

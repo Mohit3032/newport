@@ -16,7 +16,7 @@ const Intro = () => {
       <div className="about_text w-full h-auto clear-both float-left border-solid border-[#DFDFDF] border-b pb-[31px] mb-[30px]">
         <p className="mb-[11px]">
           Hi, my name is Mohit hundlani and I started with fronted when it first
-          began. I've spent most of my waking hours for the last two years
+          began. I've spent most of my waking hours for the last four years
           designing, programming and operating blogging sites.
         </p>
         <p>
@@ -35,13 +35,13 @@ const Intro = () => {
                 <span className="min-w-[100px] float-left mr-[10px] font-bold text-black">
                   Birthday:
                 </span>
-                <span>30.05.2001</span>
+                <span>11.12.2006</span>
               </li>
               <li className="m-0">
                 <span className="min-w-[100px] float-left mr-[10px] font-bold text-black">
                   Age:
                 </span>
-                <span>24</span>
+                <span>19</span>
               </li>
               <li className="m-0">
                 <span className="min-w-[100px] float-left mr-[10px] font-bold text-black">
@@ -91,13 +91,13 @@ const Intro = () => {
                 <span className="min-w-[100px] float-left mr-[10px] font-bold text-black">
                   Study:
                 </span>
-                <span>ITM Vocational University</span>
+                <span>SSC</span>
               </li>
               <li className="m-0">
                 <span className="min-w-[100px] float-left mr-[10px] font-bold text-black">
-                  Degree:
+                  Equivalent Experience in IT:
                 </span>
-                <span>Bachelors</span>
+                <span>More than 4years</span>
               </li>
               <li className="m-0">
                 <span className="min-w-[100px] float-left mr-[10px] font-bold text-black">

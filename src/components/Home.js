@@ -1,28 +1,5 @@
 import SectionContainer from "./SectionContainer";
-import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6"; // Import icons
 
-const socialIcon = [
-  {
-    id: 1,
-    icon: <FaFacebook className="w-[30px] h-[30px]" />, // Facebook icon
-    link: "https://www.facebook.com/",
-  },
-  {
-    id: 2,
-    icon: <FaGithub className="w-[30px] h-[30px]" />, // GitHub icon (replaces Twitter)
-    link: "https://github.com/",
-  },
-  {
-    id: 3,
-    icon: <FaInstagram className="w-[30px] h-[30px]" />, // Instagram icon
-    link: "https://www.instagram.com/",
-  },
-  {
-    id: 4,
-    icon: <FaLinkedin className="w-[30px] h-[30px]" />, // LinkedIn icon
-    link: "https://www.linkedin.com/",
-  },
-];
 
 const Home = () => {
   return (
@@ -52,23 +29,7 @@ const Home = () => {
                 are best suited for the job at hand.
               </p>
 
-              {/* Social Icons Section */}
-              <div className="social w-full">
-                <ul className="m-0 list-none flex space-x-6"> {/* Even spacing */}
-                  {socialIcon.map((item) => (
-                    <li key={item.id}>
-                      <a
-                        className="text-black transition-all duration-300 hover:text-gray-700 flex items-center justify-center"
-                        href={item.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {item.icon}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            
               
             </div>
           </div>

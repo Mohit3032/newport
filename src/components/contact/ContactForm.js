@@ -1,102 +1,110 @@
-import emailjs from "emailjs-com";
 import { useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
+
 const ContactForm = () => {
-  const [mailData, setMailData] = useState({
-    name: "",
-    email: "",
-    message: "",
+  const [status, setStatus] = useState(null); // null / "success" / "error"
+
+  // Validation schema
+  const ContactSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    message: Yup.string().required("Message is required"),
   });
-  const { name, email, message } = mailData;
-  const [error, setError] = useState(null);
-  const onChange = (e) =>
-    setMailData({ ...mailData, [e.target.name]: e.target.value });
-  const onSubmit = (e) => {
-    e.preventDefault();
-    if (name.length === 0 || email.length === 0 || message.length === 0) {
-      setError(true);
-      clearError();
-    } else {
-      emailjs
-        .send(
-          "service_seruhwu", // service id
-          "template_21aw58z", // template id
-          mailData,
-          "Q3pccdLZhU-mZT7tQ" // public api
-        )
-        .then(
-          (response) => {
-            setError(false);
-            clearError();
-            setMailData({ name: "", email: "", message: "" });
-          },
-          (err) => {
-            console.log(err.text);
-          }
-        );
+
+  const handleSubmit = async (values, { resetForm }) => {
+    try {
+      const response = await axios.post("https://portback-kohl.vercel.app/contact-port", values);
+      if (response.status === 200) {
+        setStatus("success");
+        resetForm();
+      } else {
+        setStatus("error");
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
     }
-  };
-  const clearError = () => {
-    setTimeout(() => {
-      setError(null);
-    }, 2000);
+
+    // Clear status after 3 seconds
+    setTimeout(() => setStatus(null), 3000);
   };
 
   return (
     <div className="fields w-full float-left clear-both h-auto">
-      <form
-        className="contact_form"
-        id="contact_form"
-        onSubmit={(e) => onSubmit(e)}
+      <Formik
+        initialValues={{ name: "", email: "", message: "" }}
+        validationSchema={ContactSchema}
+        onSubmit={handleSubmit}
       >
-        <div
-          className={error ? "empty_notice" : "returnmessage"}
-          style={{ display: error == null ? "none" : "block" }}
-        >
-          <span>
-            {error
-              ? "Please Fill Required Fields"
-              : "Your message has been received, We will contact you soon."}
-          </span>
-        </div>
-        <div className="first w-full float-left">
-          <ul className="list-none">
-            <li className="w-full mb-[30px] float-left">
-              <input
-                name="name"
-                onChange={(e) => onChange(e)}
-                value={name}
-                id="name"
-                type="text"
-                placeholder="Name"
+        {() => (
+          <Form className="contact_form">
+            {/* Status message */}
+            <div
+              className={status === "error" ? "empty_notice" : "returnmessage"}
+              style={{ display: status === null ? "none" : "block" }}
+            >
+              <span>
+                {status === "error"
+                  ? "Please fill required fields or something went wrong"
+                  : "Your message has been received, We will contact you soon."}
+              </span>
+            </div>
+
+            <div className="first w-full float-left">
+              <ul className="list-none">
+                <li className="w-full mb-[30px] float-left">
+                  <Field
+                    name="name"
+                    type="text"
+                    placeholder="Name"
+                    className="input_field"
+                  />
+                  <ErrorMessage
+                    name="name"
+                    component="div"
+                    className="error_text text-red-500 text-sm mt-1"
+                  />
+                </li>
+                <li className="w-full mb-[30px] float-left">
+                  <Field
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    className="input_field"
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="error_text text-red-500 text-sm mt-1"
+                  />
+                </li>
+              </ul>
+            </div>
+
+            <div className="last">
+              <Field
+                as="textarea"
+                name="message"
+                placeholder="Message"
+                className="textarea_field"
               />
-            </li>
-            <li className="w-full mb-[30px] float-left">
-              <input
-                name="email"
-                onChange={(e) => onChange(e)}
-                value={email}
-                id="email"
-                type="email"
-                placeholder="Email"
+              <ErrorMessage
+                name="message"
+                component="div"
+                className="error_text text-red-500 text-sm mt-1"
               />
-            </li>
-          </ul>
-        </div>
-        <div className="last">
-          <textarea
-            name="message"
-            onChange={(e) => onChange(e)}
-            value={message}
-            id="message"
-            placeholder="Message"
-          />
-        </div>
-        <div className="tokyo_tm_button" data-position="left">
-          <button type="submit">Send Message</button>
-        </div>
-        {/* If you want to change mail address to yours, please open modal.php and go to line 4 */}
-      </form>
+            </div>
+
+            <div className="tokyo_tm_button" data-position="left">
+              <button type="submit">Send Message</button>
+            </div>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };
+
 export default ContactForm;

@@ -1,16 +1,17 @@
 const experiencesData = [
-  {
+   {
     id: 1,
-    date: "2020 - 2022",
-    designation: "Freelance 3d Web Developer along side studying",
-    company: "Freelance",
-  },
-  {
-    id: 2,
-    date: "2022 - 2024",
+    date: "2021 - 2023",
     designation: "Delivering IT lectures to bachelor's and master's level students, alongside mentoring them in project development.",
     company: "V-ex Tech Solutions",
   },
+  {
+    id: 2,
+    date: "2023 - 2025",
+    designation: "Freelance fullstack Web Developer along side studying",
+    company: "Freelance",
+  },
+ 
   // {
   //   id: 3,
   //   date: "2012 - 2016",
@@ -25,16 +26,11 @@ const educationData = [
   //   degree: "Master Degree",
   //   institute: "Oxford Univercity",
   // },
-  {
-    id: 2,
-    date: "2020 - 2024",
-    degree: "Bachelor Degree",
-    institute: "ITM Vocational University",
-  },
+ 
   {
     id: 3,
-    date: "2020",
-    degree: "High School Graduate",
+    date: "2022",
+    degree: "NIOS",
     institute: "Rosary High School",
   },
 ];

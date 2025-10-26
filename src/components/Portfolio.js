@@ -259,11 +259,11 @@ const detailData = [
    {
     id: 11,
     thumbnail: "assets/img/portfolio/11.jpg",
-    title: "Business Conference",
+    title: "Future Oil Conference",
     text: [
-      "Business Conference is a web application that allows users to view the latest business conferences, This project is on hold which i am going to build for a client in few days.",
+      "Future Oil Conference is an annual event that brings together industry leaders, experts, and innovators to discuss the latest trends and developments in the oil and gas sector.",
     ],
-    client: "ArrowEvents",
+    client: "Aro Events",
     date: "June 6, 2025",
     category: "Detail",
     share: [
@@ -272,14 +272,14 @@ const detailData = [
       //   iconName: "icon-github-squared",
       //   link: "https://www.facebook.com/",
       // },
-      // {
-      //   id: 2,
-      //   iconName: "icon-share",
-      //   link: "https://twitter.com/",
-      // },
+      {
+        id: 1,
+        iconName: "icon-share",
+        link: "https://futureoilconference.com/",
+      },
     ],
-    bigImage: "assets/img/portfolio/b1.png",
-    images: ["assets/img/portfolio/b2.png", "assets/img/portfolio/b3.png"],
+    bigImage: "assets/img/portfolio/b2.png",
+    images: ["assets/img/portfolio/b1.png", "assets/img/portfolio/b3.png"],
   },
    {
     id: 12,
@@ -307,6 +307,32 @@ const detailData = [
     bigImage: "assets/img/portfolio/c1.png",
     images: ["assets/img/portfolio/c2.png", "assets/img/portfolio/c3.png"],
   },
+    {
+    id: 13,
+    thumbnail: "assets/img/portfolio/13.jpeg",
+    title: "Aro Events",
+    text: [
+      "Aro Events is an event management company that specializes in organizing and managing events such as conferences, seminars, and workshops.",
+    ],
+    client: "Aro Events",
+    date: "September 30, 2025",
+    category: "Detail",
+    share: [
+      // {
+      //   id: 1,
+      //   iconName: "icon-github-squared",
+      //   link: "https://www.facebook.com/",
+      // },
+      {
+        id: 1,
+        iconName: "icon-share",
+        link: "https://www.aroevents.com/",
+      },
+    ],
+    bigImage: "assets/img/portfolio/ar3.png",
+    images: ["assets/img/portfolio/ar1.png", "assets/img/portfolio/ar2.png"],
+  },
+  
 ];
 
 const Portfolio = () => {
@@ -326,41 +352,49 @@ const Portfolio = () => {
           </div>
 
           <div className="list_wrapper w-full h-auto clear-both float-left">
-            <ul className="portfolio_list gallery_zoom ml-[-40px] list-none">
-              {detailData.map((item) => (
-                <li
-                  key={item.id}
-                  className="detail mb-[40px] float-left w-1/3 pl-[40px] item__"
-                >
-                  <div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-                    <div
-                      className="entry tokyo_tm_portfolio_animation_wrap"
-                      data-title={item.title}
-                      data-category={item.category}
-                    >
-                      <a
-                        className="popup_info"
-                        href="#"
-                        onClick={() => {
-                          setPortfolioDetailsModal(item);
-                          modalToggle(true);
-                        }}
-                      >
-                        <img
-                          className="opacity-0 min-w-full"
-                          src="assets/img/thumbs/1-1.jpg"
-                          alt="image"
-                        />
-                        <div
-                          className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-                          data-img-url={item.thumbnail}
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
+         <ul className="portfolio_list gallery_zoom ml-[-40px] list-none">
+  {detailData.map((item) => (
+    <li
+      key={item.id}
+      className="detail mb-[40px] float-left w-1/3 pl-[40px] item__"
+    >
+      <div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
+        <div
+          className="entry tokyo_tm_portfolio_animation_wrap"
+          data-title={item.title}
+          data-category={item.category}
+        >
+          <a
+            className="popup_info"
+            href="#"
+            onClick={() => {
+              setPortfolioDetailsModal(item);
+              modalToggle(true);
+            }}
+          >
+            <img
+              className="opacity-0 min-w-full"
+              src="assets/img/thumbs/1-1.jpg"
+              alt="image"
+            />
+            <div
+              className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
+              data-img-url={item.thumbnail}
+            />
+          </a>
+        </div>
+      </div>
+    </li>
+  ))}
+
+  {/* Coming Soon / More Projects message */}
+  <li className="detail mb-[40px] float-left w-1/3 pl-[40px] flex items-center justify-center">
+    <div className="inner w-full h-full flex items-center justify-center border-2 border-dashed border-gray-400 rounded-md p-6 text-center text-lg text-gray-600">
+      More Projects Coming Soon!
+    </div>
+  </li>
+</ul>
+
           </div>
         </div>
       </div>
